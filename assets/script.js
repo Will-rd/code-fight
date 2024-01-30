@@ -7,6 +7,9 @@ let weight = ["420 lbs", "300 lbs", "20 lbs", "185 lbs", "225 lbs", "378 lbs", "
 //This array is to gather values to use for damage after combat begins
 let randoNums = []
 
+
+
+
 //A function to output a random item from an array.
 let randomEl = function rand(arr) {
     return arr[Math.floor(arr.length * Math.random()) | 0]
@@ -48,6 +51,7 @@ let blueCorner = {
 function combat() {
     getBlue();
     getRed();
+    announcement();
     console.log("LETS GET READY TO RUMBLE!")
     console.log(`In the blue corner, standing at ${blueCorner.height}, weighing ${blueCorner.weight} we have ${blueCorner.name}!`)
     console.log(`And in the red corner, standing at ${redCorner.height}, weighing ${redCorner.weight} we have ${redCorner.name}!`)
@@ -81,35 +85,64 @@ function combat() {
         }
     }
 
-    if (redCorner.hp <= 0) return console.log(`${blueCorner.name} WINS!`)
-    if (blueCorner.hp <= 0) return console.log(`${redCorner.name} WINS!`)
+    if (redCorner.hp <= 0) {
+        //return console.log(`${blueCorner.name} WINS!`)
+        var resultInfo = document.getElementById('results');
+        var resultText = document.createElement('h1');
+        resultInfo.textContent = `${redCorner.name} WINS!`;
+        resultInfo.appendChild(resultText);
+
+
+
+
+    }
+    if (blueCorner.hp <= 0) {
+        //return console.log(`${redCorner.name} WINS!`)
+        var resultInfo = document.getElementById('results');
+        var resultText = document.createElement('h1');
+        resultInfo.textContent = `${blueCorner.name} WINS!`;
+        resultInfo.appendChild(resultText);
+
+
+
+    }
 
 }
-function rematch(){
+function rematch() {
     location.reload();
 }
 
+
 function getRed() {
     var redBase = document.getElementById('redCorner')
-    var redCardEl = document.createElement('h1')
+    var redCardEl = document.createElement('h3')
     redCardEl.setAttribute('class', "redCard col-md-5 p-3 mb-2 font-weight-bold");
-    redCardEl.textContent = "The Red Corner: "
+    // redCardEl.textContent = "The Red Corner: "
 
-    var redNameBox = document.createElement('h4');
+    var redNameBox = document.createElement('h3');
     redNameBox.textContent = `${redCorner.name}`;
+
     redBase.appendChild(redCardEl)
     redCardEl.appendChild(redNameBox);
 }
 function getBlue() {
     var blueBase = document.getElementById('blueCorner');
-    var blueCardEl = document.createElement('h1')
+    var blueCardEl = document.createElement('h2')
     blueCardEl.setAttribute('class', "blueCard col-md-5 p-3 mb-2 font-weight-bold");
-    blueCardEl.textContent = "The Blue Corner: "
+    // blueCardEl.textContent = "The Blue Corner: "
 
     var blueNameBox = document.createElement('h4');
     blueNameBox.textContent = `${blueCorner.name}`;
+
     blueBase.appendChild(blueCardEl);
     blueCardEl.appendChild(blueNameBox);
+}
+function announcement() {
+    var announcementDiv = document.getElementById('announcementBox');
+    var announcements = document.createElement('p');
+    announcements.textContent = (`In the blue corner, standing at ${blueCorner.height}, weighing ${blueCorner.weight} we have ${blueCorner.name}!` + ` And in the red corner, standing at ${redCorner.height}, weighing ${redCorner.weight} we have ${redCorner.name}!`)
+
+    announcementDiv.appendChild(announcements);
 }
 
 strikes();

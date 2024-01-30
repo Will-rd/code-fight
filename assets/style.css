@@ -3,7 +3,9 @@ body {
     color: yellow;
     font-size: x-large;
     display: flex;
-    justify-content: flex-start;
+    width: 600px;
+    height: 300px;
+    margin-top: 30px;
 }
 
 #redCorner {
@@ -20,8 +22,21 @@ body {
     margin: 15px;
 }
 
+#announcementBox {
+    background-color: gold;
+    width: 800px;
+    height: 200px;
+    margin-left: 170px;
+    margin-bottom: 50px;
+    color: black;
+}
+
 button {
     background-color: gray;
     color: yellow;
     margin: 10px;
+}
+
+div {
+    color: red;
 }
