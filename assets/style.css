@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+    color: yellow;
+    font-size: x-large;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#redCorner {
+    background-color: red;
+    height: 300px;
+    width: 300px;
+    margin: 15px;
+}
+
+#blueCorner {
+    background-color: blue;
+    height: 300px;
+    width: 300px;
+    margin: 15px;
+}
+
+button {
+    background-color: gray;
+    color: yellow;
+    margin: 10px;
+}
